@@ -1,0 +1,28 @@
+<div class="row justify-content-center">
+  <% if flash[:success] %>
+    <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+        <%= flash[:success] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <%end%>
+  <div class="col-md-6 my-3">
+      <div class="card text-center my-2">
+        <div class="card-header">
+          <% if @user.is_admin == true %>
+            <span class="badge text-bg-success">Admin</span>
+          <%end%>
+        </div>
+        <div class="card-body">
+          <%= image_tag @user.gravatar_url, class: "my-3 rounded rounded-circle" %>
+          <h5 class="card-title"><%= @user.username %></h5>
+          <p class="card-text"><%= @user.email %></p>
+          <%= link_to "View", user_path(@user), class: "btn btn-success" %>
+          <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+          <%= link_to "Delete", user_path(@user), method: :delete, class: "btn btn-danger" %>
+        </div>
+        <div class="card-footer text-muted">
+          created at <%= @user.created_at.year %>-<%= @user.created_at.month %>-<%= @user.created_at.day %> and updated at <%= @user.updated_at.year %>-<%= @user.updated_at.month %>-<%= @user.updated_at.day %>
+        </div>
+      </div>
+  </div>
+</div>

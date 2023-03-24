@@ -76,3 +76,8 @@ end
 gem "jquery-rails"
 gem "bootstrap"
 gem "sassc-rails"
+gem "bcrypt"
+gem "byebug"
+gem "gravtastic"
+gem "kaminari"
+gem "bootstrap5-kaminari-views"
