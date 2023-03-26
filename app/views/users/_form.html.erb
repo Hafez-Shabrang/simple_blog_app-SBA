@@ -1,18 +1,28 @@
 <%= form_with(model: @user) do |form| %>
 
   <div class="mb-3">
-    <%= form.label :username, class: "form-label" %>
+    <%= form.label :username, class: "form-label" %><span class="text-danger">*</span>
     <%= form.text_field :username, class: "form-control", id: "exampleFormControlInput1", placeholder: "Username" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :email, class: "form-label" %>
+    <%= form.label :email, class: "form-label" %><span class="text-danger">*</span>
     <%= form.email_field :email, class: "form-control", id: "exampleFormControlInput1", placeholder: "Email" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :password, class: "form-label" %>
+    <%= form.label :password, class: "form-label" %><span class="text-danger">*</span>
     <%= form.password_field :password, class: "form-control", id: "exampleFormControlInput1", placeholder: "Password" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :bio, class: "form-label" %>
+    <%= form.text_field :bio, class: "form-control", id: "exampleFormControlInput1", placeholder: "Bio" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :website, class: "form-label" %>
+    <%= form.text_field :website, class: "form-control", id: "exampleFormControlInput1", placeholder: "Website URL" %>
   </div>
 
   <div class="text-center">

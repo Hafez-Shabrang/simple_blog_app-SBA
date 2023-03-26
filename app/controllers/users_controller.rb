@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @posts = @user.posts
   end
 
   def new
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :bio, :website)
   end
 
 end

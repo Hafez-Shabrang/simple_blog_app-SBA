@@ -16,8 +16,7 @@
         </div>
         <div class="card-body">
           <%= image_tag user.gravatar_url, class: "my-3 rounded rounded-circle" %>
-          <h5 class="card-title"><%= user.username %></h5>
-          <p class="card-text"><%= user.email %></p>
+          <h5 class="card-title my-2"><%= user.username %></h5>
           <%= link_to "View", user_path(user), class: "btn btn-success" %>
           <%= link_to "Edit", edit_user_path(user), class: "btn btn-primary" %>
           <%= link_to "Delete", user_path(user), method: :delete, class: "btn btn-danger" %>

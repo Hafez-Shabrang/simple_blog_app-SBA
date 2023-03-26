@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+  <% if flash[:success] %>
+    <div class="alert alert-success alert-dismissible fade show my-3" role="alert">
+      <%= flash[:success] %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <%end%>
+  <div class="row justify-content-center">
+    <div class="col-md-12 my-2">
+      <h1 class="text-center my-3">All posts</h1>
+    </div>
+    <div class="col-md-6 my-2">
+      <%= render "selection" %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <% @posts.each do |post| %>
+      <div class="card text-center my-2">
+        <div class="card-body">
+          <div class="row">
+              <%= image_tag post.images[0], class: "col-md-12" %>
+          </div>
+          <h5 class="card-title my-3"><%= post.title %></h5>
+          <p class="card-text text-justified"><%= truncate(post.content, length:150) %></p>
+          <%= link_to "View", post_path(post), class: "btn btn-success" %>
+          <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary" %>
+          <%= link_to "Delete", post_path(post), method: :delete, class: "btn btn-danger" %>
+        </div>
+        <div class="card-footer text-muted">
+          created at <%= post.created_at.year %>-<%= post.created_at.month %>-<%= post.created_at.day %> and updated at <%= post.updated_at.year %>-<%= post.updated_at.month %>-<%= post.updated_at.day %>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @posts %>
+  </div>
+</div>

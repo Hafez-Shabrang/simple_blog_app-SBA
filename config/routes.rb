@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
   resources :users
+  resources :posts
   get "login", to: "session#new"
   post "login", to: "session#create"
   get "logout", to: "session#destroy"

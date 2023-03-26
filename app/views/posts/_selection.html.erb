@@ -1,0 +1,7 @@
+<%= form_with(model: @post, method: :get) do |f| %>
+  <div class="form-select">
+    <%= f.label :ordering %>
+    <%= f.select :ordering, options_for_select(['Title-ASC', 'Title-DESC', 'Date-ASC', 'Date-DESC'])%>
+    <%= f.submit "Filter", class: "btn btn-primary mx-2" %>
+  </div>
+<%end%>

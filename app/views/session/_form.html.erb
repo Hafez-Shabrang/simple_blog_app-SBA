@@ -1,12 +1,12 @@
 <%= form_with(scope: :session) do |form| %>
 
   <div class="mb-3">
-    <%= form.label :email, class: "form-label" %>
+    <%= form.label :email, class: "form-label" %><span class="text-danger">*</span>
     <%= form.email_field :email, class: "form-control", id: "exampleFormControlInput1", placeholder: "Email" %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :password, class: "form-label" %>
+    <%= form.label :password, class: "form-label" %><span class="text-danger">*</span>
     <%= form.password_field :password, class: "form-control", id: "exampleFormControlInput1", placeholder: "Password" %>
   </div>
 

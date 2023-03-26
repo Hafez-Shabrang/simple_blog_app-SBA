@@ -14,8 +14,15 @@
         </div>
         <div class="card-body">
           <%= image_tag @user.gravatar_url, class: "my-3 rounded rounded-circle" %>
-          <h5 class="card-title"><%= @user.username %></h5>
-          <p class="card-text"><%= @user.email %></p>
+          <h5 class="card-title">Username: <%= @user.username %></h5>
+          <p class="card-text">Email: <%= @user.email %></p>
+          <% if @user.bio? %>
+            <p class="card-text">Bio: <%= @user.bio %></p>
+          <%end%>
+          <% if @user.website? %>
+            <p class="card-text">Website: <a href="#"><%= @user.website %></a></p>
+          <%end%>
+          <p class="card-text">Total Created Posts: <%= pluralize(@posts.length(), "post") %></p>
           <%= link_to "View", user_path(@user), class: "btn btn-success" %>
           <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
           <%= link_to "Delete", user_path(@user), method: :delete, class: "btn btn-danger" %>
@@ -25,4 +32,40 @@
         </div>
       </div>
   </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <h1 class="mt-5 mb-3 text-center">
+        <%= @user.username %>'s posts
+      </h1>
+      <% @posts.each do |post| %>
+        <div class="card text-center my-2">
+          <div class="card-body">
+            <% if post.images.any? %>
+              <div class="row">
+                <%= image_tag post.images[0], class: "col-md-12" %>
+              </div>
+            <%end%>
+            <h5 class="card-title my-3"><%= post.title %></h5>
+            <p class="card-text text-justified"><%= truncate(post.content, length:150) %></p>
+            <%= link_to "View", post_path(post), class: "btn btn-success" %>
+            <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary" %>
+            <%= link_to "Delete", post_path(post), method: :delete, class: "btn btn-danger" %>
+          </div>
+          <div class="card-footer text-muted">
+            created at <%= post.created_at.year %>-<%= post.created_at.month %>-<%= post.created_at.day %> and updated at <%= post.updated_at.year %>-<%= post.updated_at.month %>-<%= post.updated_at.day %> - By <%= post.user.username %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="row justify-content-center">
+
+
 </div>
