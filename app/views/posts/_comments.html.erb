@@ -1,0 +1,22 @@
+<div class="row justify-content-center my-5">
+  <div class="col-md-12">
+    <h1 class="text-center my-4">All comments for this post</h1>
+    <% post.comments.order(created_at: :desc).each do |comment| %>
+      <div class="accordion my-2" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Commented by (<%= comment.user.username %>)
+              <%= link_to "Delete", post_comment_path(post, comment), method: :delete, class: "btn btn-danger mx-4" %>
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p><%= comment.body %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
