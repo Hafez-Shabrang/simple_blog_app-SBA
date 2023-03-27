@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   before_action :find_user_by_id, only: [:show, :edit, :update, :destroy]
   before_action :user_params, only: [:create, :update]
+  before_action :require_login, only: [:index, :show, :edit, :update, :destroy]
+  before_action :admin_associations, only: [:index, :destroy]
   def index
     @users = User.all.page(params[:page])
   end
@@ -16,10 +18,16 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      flash[:success] = "User has been created successfully"
-      redirect_to @user
+    user = User.find_by(email: @user.email)
+    if !user
+      if @user.save
+        flash[:success] = "User has been created successfully"
+        redirect_to @user
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
+      flash[:error] = "This user has been signed up already by this email"
       render :new, status: :unprocessable_entity
     end
   end

@@ -2,6 +2,8 @@ class PostsController < ApplicationController
 
   before_action :find_post_by_id, only: [:show, :edit, :update, :destroy]
   before_action :post_params, only: [:create, :update]
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_associations, only: [:new, :create, :edit, :update, :destroy]
 
   def index
 
@@ -34,7 +36,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
+    begin
+      authorize @post
+    rescue
+      flash[:error] = "You can't create post"
+      redirect_to new_post_path
+    end
+
     if @post.save
       flash[:success] = "Post has been created successfully"
       redirect_to @post
@@ -71,6 +80,5 @@ class PostsController < ApplicationController
   def find_post_by_id
     @post = Post.find(params[:id])
   end
-
 
 end

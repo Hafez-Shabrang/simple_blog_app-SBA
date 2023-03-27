@@ -17,9 +17,11 @@
     <% @posts.each do |post| %>
       <div class="card text-center my-2">
         <div class="card-body">
-          <div class="row">
+          <% if post.images.any? %>
+            <div class="row">
               <%= image_tag post.images[0], class: "col-md-12" %>
-          </div>
+            </div>
+          <%end%>
           <h5 class="card-title my-3"><%= post.title %></h5>
           <p class="card-text text-justified"><%= truncate(post.content, length:150) %></p>
           <%= link_to "View", post_path(post), class: "btn btn-success" %>
