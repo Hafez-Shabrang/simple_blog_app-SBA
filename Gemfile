@@ -71,6 +71,9 @@ group :test do
   gem "webdrivers"
 end
 
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0.0'
+end
 
 # Our packages
 gem "jquery-rails"
