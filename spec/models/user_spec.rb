@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
 
   # Username testing
   it "valid username" do
-    user = User.new(username: "User1", email: "user1@gmail.com", password: "123")
+    user = User.new(username: "User1", email: "user2@gmail.com", password: "123")
     expect(user).to be_valid
   end
 
@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
 
   # Username testing
   it "valid email" do
-    user = User.new(username: "User1", email: "user1@gmail.com", password: "123")
+    user = User.new(username: "User1", email: "user2@gmail.com", password: "123")
     expect(user).to be_valid
   end
 
@@ -49,4 +49,5 @@ RSpec.describe User, type: :model do
     user.username = "a" * 31
     expect(user).to_not be_valid
   end
+
 end

@@ -3,11 +3,11 @@
 one:
   username: MyString
   email: MyString
-  passwotd_digest: MyString
+  password_digest: MyString
   is_admin: false
 
 two:
   username: MyString
   email: MyString
-  passwotd_digest: MyString
+  password_digest: MyString
   is_admin: false
