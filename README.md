@@ -46,8 +46,6 @@ Things you may want to cover:
     * `bundle install`
     * `rails db:create`
     * `rails db:migrate`
-    * `rails generate pundit:install`
-    * `rails generate rspec:install`
     * `rails s`
 
 
