@@ -12,6 +12,9 @@ Things you may want to cover:
     * `sudo apt install postgresql postgresql-contrib libpq-dev`
     * `sudo systemctl start postgresql`
     * `sudo systemctl enable postgresql`
+    * Create PostgreSQL username and database 
+    * `sudo -u postgres createuser -s -e your_user_name`
+    * `sudo -u postgres createdb -o your_user_name your_database_name` 
   
 
 
@@ -43,6 +46,16 @@ Things you may want to cover:
 
     * `git clone https://github.com/Hafez-Shabrang/simple_blog_app-SBA.git`
     * `cd simple_blog_app-SBA/`
+    * Go to `config/database.yml` and config it
+    * ```
+      development:
+        <<: *default
+        database: your_database_name
+        username: your_user_name
+        password: your_password_here
+        host: localhost
+        port: 5432
+    ```
     * `bundle install`
     * `rails db:create`
     * `rails db:migrate`

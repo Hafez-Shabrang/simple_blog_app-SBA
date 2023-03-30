@@ -75,10 +75,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0'
 end
 
-group :production do
-  gem 'pg'
-end
-
 
 # Our packages
 gem "jquery-rails"
