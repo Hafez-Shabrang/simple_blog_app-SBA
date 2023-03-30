@@ -13,8 +13,12 @@ Things you may want to cover:
     * `sudo systemctl start postgresql`
     * `sudo systemctl enable postgresql`
     * Create PostgreSQL username and database 
-    * `sudo -u postgres createuser -s -e your_user_name`
-    * `sudo -u postgres createdb -o your_user_name your_database_name` 
+    * `sudo -u postgres createuser yuor_user_name`
+    * `sudo -u postgres createdb your_database_name` 
+    * If you want create password to your db following command
+    * `sudo -u postgres psql`
+    * `alter user <username> with encrypted password '<password>';`
+    * `grant all privileges on database <dbname> to <username>;`
   
 
 
